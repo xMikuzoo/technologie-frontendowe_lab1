@@ -4,9 +4,10 @@ import styles from "./BookList.module.css";
 
 type BookListProps = {
   books: Book[];
+  onSelectBook: (book: Book) => void;
 };
 
-export default function BookList({ books }: BookListProps) {
+export default function BookList({ books, onSelectBook }: BookListProps) {
   if (books.length === 0) {
     return <p>Brak książek spełniających kryteria.</p>;
   }
@@ -14,7 +15,7 @@ export default function BookList({ books }: BookListProps) {
   return (
     <ul className={styles.grid}>
       {books.map((book) => (
-        <BookCard key={book.id} book={book} />
+        <BookCard key={book.id} book={book} onSelect={onSelectBook} />
       ))}
     </ul>
   );

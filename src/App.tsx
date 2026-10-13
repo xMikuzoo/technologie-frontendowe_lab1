@@ -1,13 +1,15 @@
 import { useState } from "react";
+import BookDetails from "./components/BookDetails";
 import BookList from "./components/BookList";
 import FilterBar from "./components/FilterBar";
 import { books } from "./data/books";
-import type { GenreFilter } from "./types";
+import type { Book, GenreFilter } from "./types";
 
 export default function App() {
   const [genre, setGenre] = useState<GenreFilter>("wszystkie");
   const [onlyAvailable, setOnlyAvailable] = useState(false);
   const [query, setQuery] = useState("");
+  const [selectedBook, setSelectedBook] = useState<Book | null>(null);
 
   const normalizedQuery = query.trim().toLocaleLowerCase("pl");
 
@@ -18,6 +20,15 @@ export default function App() {
       (b.title.toLocaleLowerCase("pl").includes(normalizedQuery) ||
         b.author.toLocaleLowerCase("pl").includes(normalizedQuery)),
   );
+
+  if (selectedBook) {
+    return (
+      <>
+        <h1>📚 Katalog książek</h1>
+        <BookDetails book={selectedBook} onClose={() => setSelectedBook(null)} />
+      </>
+    );
+  }
 
   return (
     <>
@@ -31,7 +42,7 @@ export default function App() {
         onQueryChange={setQuery}
       />
       <p>Znaleziono: {visibleBooks.length}</p>
-      <BookList books={visibleBooks} />
+      <BookList books={visibleBooks} onSelectBook={setSelectedBook} />
     </>
   );
 }

@@ -1,6 +1,6 @@
 import type { GenreFilter } from "../types";
 
-type FilterProps = {
+type FilterBarProps = {
   genre: GenreFilter;
   onlyAvailable: boolean;
   onGenreChange: (genre: GenreFilter) => void;
@@ -9,14 +9,14 @@ type FilterProps = {
   onQueryChange: (value: string) => void;
 };
 
-export default function Filter({
+export default function FilterBar({
   genre,
   onlyAvailable,
   onGenreChange,
   onOnlyAvailableChange,
   query,
   onQueryChange,
-}: FilterProps) {
+}: FilterBarProps) {
   const options: GenreFilter[] = [
     "wszystkie",
     "fantastyka",

@@ -42,7 +42,9 @@ export default function FilterBar({
         onChange={(e) => onGenreChange(e.target.value as GenreFilter)}
       >
         {options.map((option) => (
-          <option key={option} value={option}>{option}</option>
+          <option key={option} value={option}>
+            {option}
+          </option>
         ))}
       </select>
 

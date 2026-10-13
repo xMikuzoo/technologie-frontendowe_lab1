@@ -25,7 +25,10 @@ export default function App() {
     return (
       <>
         <h1>📚 Katalog książek</h1>
-        <BookDetails book={selectedBook} onClose={() => setSelectedBook(null)} />
+        <BookDetails
+          book={selectedBook}
+          onClose={() => setSelectedBook(null)}
+        />
       </>
     );
   }

@@ -1,13 +1,30 @@
+import { useState } from "react";
 import BookList from "./components/BookList";
+import FilterBar from "./components/FilterBar";
 import { books } from "./data/books";
-
-// TODO (Zadanie 4): dodaj filtrowanie po gatunku i dostępności (komponent <FilterBar />).
+import type { GenreFilter } from "./types";
 
 export default function App() {
+  const [genre, setGenre] = useState<GenreFilter>("wszystkie");
+  const [onlyAvailable, setOnlyAvailable] = useState(false);
+
+  const visibleBooks = books.filter(
+    (b) =>
+      (genre === "wszystkie" || b.genre === genre) &&
+      (!onlyAvailable || b.available),
+  );
+
   return (
     <>
       <h1>📚 Katalog książek</h1>
-      <BookList books={books} />
+      <FilterBar
+        genre={genre}
+        onGenreChange={setGenre}
+        onlyAvailable={onlyAvailable}
+        onOnlyAvailableChange={setOnlyAvailable}
+      />
+      <p>Znaleziono: {visibleBooks.length}</p>
+      <BookList books={visibleBooks} />
     </>
   );
 }

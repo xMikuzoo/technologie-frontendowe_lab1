@@ -10,3 +10,5 @@ export type Book = {
   price: number; // PLN
   available: boolean;
 };
+
+export type GenreFilter = Genre | "wszystkie";

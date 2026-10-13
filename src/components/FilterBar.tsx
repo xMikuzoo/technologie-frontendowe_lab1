@@ -1,4 +1,4 @@
-import { GenreFilter } from "./BookList";
+import type { GenreFilter } from "../types";
 
 type FilterProps = {
   genre: GenreFilter;
@@ -14,11 +14,11 @@ export default function Filter({
   onOnlyAvailableChange,
 }: FilterProps) {
   const options: GenreFilter[] = [
+    "wszystkie",
     "fantastyka",
-    "informatyka",
     "kryminał",
     "reportaż",
-    "wszystkie",
+    "informatyka",
   ];
 
   return (
@@ -30,7 +30,7 @@ export default function Filter({
         onChange={(e) => onGenreChange(e.target.value as GenreFilter)}
       >
         {options.map((option) => (
-          <option value={option}>{option}</option>
+          <option key={option} value={option}>{option}</option>
         ))}
       </select>
 

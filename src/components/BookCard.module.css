@@ -1,0 +1,11 @@
+.card {
+  list-style: none;
+  h3 {
+    color: black;
+    text-decoration: underline;
+  }
+  border: 1px solid black;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}

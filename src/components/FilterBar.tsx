@@ -5,6 +5,8 @@ type FilterProps = {
   onlyAvailable: boolean;
   onGenreChange: (genre: GenreFilter) => void;
   onOnlyAvailableChange: (value: boolean) => void;
+  query: string;
+  onQueryChange: (value: string) => void;
 };
 
 export default function Filter({
@@ -12,6 +14,8 @@ export default function Filter({
   onlyAvailable,
   onGenreChange,
   onOnlyAvailableChange,
+  query,
+  onQueryChange,
 }: FilterProps) {
   const options: GenreFilter[] = [
     "wszystkie",
@@ -23,6 +27,14 @@ export default function Filter({
 
   return (
     <div>
+      <label htmlFor="searchQuery">Szukaj po tytule lub autorze</label>
+      <input
+        id="searchQuery"
+        type="search"
+        value={query}
+        onChange={(e) => onQueryChange(e.target.value)}
+      />
+
       <label htmlFor="genreFilter">Filturj po gatunku</label>
       <select
         id="genreFilter"

@@ -1,19 +1,22 @@
 .badge {
   display: inline-block;
-  padding: 2px 10px;
+  padding: 3px 10px;
+  border: 1px solid transparent;
   border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.5;
 }
 .neutral {
-  background: #eef2ff;
-  color: #4338ca;
+  background: rgba(255, 255, 255, 0.7);
+  border-color: var(--glass-border);
+  color: var(--text);
 }
 .success {
-  background: #dcfce7;
-  color: #166534;
+  background: rgba(214, 236, 221, 0.85);
+  color: #1d5c36;
 }
 .warning {
-  background: #fee2e2;
-  color: #991b1b;
+  background: rgba(248, 223, 218, 0.9);
+  color: #8e2a1c;
 }

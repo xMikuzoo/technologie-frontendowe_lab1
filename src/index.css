@@ -1,56 +1,79 @@
 :root {
-  --bg: #f6f7fb;
-  --card: #ffffff;
-  --text: #1f2430;
-  --muted: #667085;
-  --primary: #4f46e5;
-  --primary-hover: #4338ca;
-  --danger: #dc2626;
-  --border: #e4e7ec;
-  font-family:
-    system-ui,
-    -apple-system,
-    "Segoe UI",
-    Roboto,
-    sans-serif;
+  --bg-top: #f4efe9;
+  --bg-1: #ebe5dd;
+  --bg-2: #d6cdc2;
+  --text: #1e1b18;
+  --muted: #6b635a;
+  --glass: rgba(255, 255, 255, 0.42);
+  --glass-strong: rgba(255, 255, 255, 0.66);
+  --glass-border: rgba(255, 255, 255, 0.75);
+  --glass-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 10px 30px rgba(70, 52, 34, 0.08);
+  --glass-shadow-hover:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 18px 40px rgba(70, 52, 34, 0.16);
+  --ink: #161514;
+  --ink-2: #23211f;
+  --ink-line: rgba(255, 255, 255, 0.09);
+  --on-ink: #f3efe9;
+  --on-ink-muted: #a39d95;
+  --track: rgba(30, 27, 24, 0.12);
+  --danger: #a3301f;
+  --ring: 0 0 0 3px rgba(123, 90, 60, 0.35);
+  --radius: 16px;
+  --radius-lg: 24px;
+  --font-ui: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  font-family: var(--font-ui);
+  line-height: 1.5;
   color: var(--text);
-  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
 }
 * {
   box-sizing: border-box;
 }
 body {
   margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      1100px 700px at 12% -10%,
+      var(--bg-top) 0%,
+      transparent 60%
+    ),
+    linear-gradient(165deg, var(--bg-1) 0%, var(--bg-2) 100%);
+  background-attachment: fixed;
 }
 #root {
-  max-width: 960px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 24px 16px 64px;
+  padding: 24px;
 }
-h1 {
-  margin-top: 0;
+h1,
+h2,
+h3 {
+  margin: 0;
+  letter-spacing: -0.01em;
 }
 button {
   font: inherit;
+  font-weight: 600;
   cursor: pointer;
-  border: 1px solid var(--border);
-  background: var(--card);
-  padding: 6px 12px;
-  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-strong);
+  color: var(--text);
+  padding: 10px 18px;
+  min-height: 44px;
+  border-radius: 999px;
+  box-shadow: var(--glass-shadow);
+  transition:
+    background-color 0.15s,
+    transform 0.15s;
 }
 button:hover {
-  border-color: var(--primary);
+  background: #fff;
 }
-button.primary {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: #fff;
-}
-button.primary:hover {
-  background: var(--primary-hover);
-}
-button.danger {
-  color: var(--danger);
+button:active {
+  transform: translateY(1px);
 }
 button:disabled {
   opacity: 0.5;
@@ -60,16 +83,10 @@ input,
 select,
 textarea {
   font: inherit;
-  padding: 8px 10px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: #fff;
 }
-label {
-  display: grid;
-  gap: 4px;
-  font-size: 0.9rem;
-  color: var(--muted);
+:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
 }
 .error {
   color: var(--danger);

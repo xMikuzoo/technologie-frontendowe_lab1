@@ -20,17 +20,27 @@ export default function BookCard({ book, onSelect }: BookCardProps) {
         if (e.key === "Enter") onSelect(book);
       }}
     >
-      <h3>{title}</h3>
-      {available ? (
-        <Badge tone="success">Dostępna</Badge>
-      ) : (
-        <Badge tone="warning">Brak w magazynie</Badge>
-      )}
-      <p>Autor: {author}</p>
-      <p>Rok: {year}</p>
-      <Badge>{genre}</Badge>
-      <p>Ocena: {stars(rating)}</p>
-      <p>Cena: {formatPrice(price)}</p>
+      <div className={styles.top}>
+        <span>{genre}</span>
+        <span>{year}</span>
+      </div>
+
+      <h3 className={styles.title}>{title}</h3>
+      <p className={styles.author}>{author}</p>
+
+      <p className={styles.rating}>
+        <span className={styles.stars}>{stars(rating)}</span>
+        <span className={styles.ratingValue}>{rating}/5</span>
+      </p>
+
+      <div className={styles.footer}>
+        <span className={styles.price}>{formatPrice(price)}</span>
+        {available ? (
+          <Badge tone="success">Dostępna</Badge>
+        ) : (
+          <Badge tone="warning">Brak w magazynie</Badge>
+        )}
+      </div>
     </li>
   );
 }

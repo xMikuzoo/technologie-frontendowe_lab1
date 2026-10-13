@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./App.module.css";
 import BookDetails from "./components/BookDetails";
 import BookList from "./components/BookList";
 import FilterBar from "./components/FilterBar";
@@ -26,33 +27,43 @@ export default function App() {
     sortBy,
   );
 
-  if (selectedBook) {
-    return (
-      <>
-        <h1>📚 Katalog książek</h1>
-        <BookDetails
-          book={selectedBook}
-          onClose={() => setSelectedBook(null)}
-        />
-      </>
-    );
-  }
-
   return (
-    <>
-      <h1>📚 Katalog książek</h1>
-      <FilterBar
-        genre={genre}
-        onGenreChange={setGenre}
-        onlyAvailable={onlyAvailable}
-        onOnlyAvailableChange={setOnlyAvailable}
-        query={query}
-        onQueryChange={setQuery}
-        sortBy={sortBy}
-        onSortChange={setSortBy}
-      />
-      <p>Znaleziono: {visibleBooks.length}</p>
-      <BookList books={visibleBooks} onSelectBook={setSelectedBook} />
-    </>
+    <div className={styles.shell}>
+      <aside className={styles.sidebar}>
+        <h1 className={styles.brand}>Katalog książek</h1>
+
+        <p className={styles.stat}>
+          <span className={styles.statLabel}>Znaleziono:</span>{" "}
+          <span className={styles.statValue}>{visibleBooks.length}</span>
+        </p>
+
+        {!selectedBook && (
+          <FilterBar
+            genre={genre}
+            onGenreChange={setGenre}
+            onlyAvailable={onlyAvailable}
+            onOnlyAvailableChange={setOnlyAvailable}
+            query={query}
+            onQueryChange={setQuery}
+            sortBy={sortBy}
+            onSortChange={setSortBy}
+          />
+        )}
+      </aside>
+
+      <main className={styles.main}>
+        {selectedBook ? (
+          <BookDetails
+            book={selectedBook}
+            onClose={() => setSelectedBook(null)}
+          />
+        ) : (
+          <>
+            <h2 className={styles.mainTitle}>Kolekcja</h2>
+            <BookList books={visibleBooks} onSelectBook={setSelectedBook} />
+          </>
+        )}
+      </main>
+    </div>
   );
 }

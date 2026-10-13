@@ -16,25 +16,48 @@ export default function BookDetails({ book, onClose }: BookDetailsProps) {
       <button type="button" onClick={onClose}>
         ← Wróć do listy
       </button>
-      <h2>{title}</h2>
-      <p className={styles.badges}>
-        <Badge>{genre}</Badge>
-        {available ? (
-          <Badge tone="success">Dostępna</Badge>
-        ) : (
-          <Badge tone="warning">Brak w magazynie</Badge>
-        )}
-      </p>
-      <dl className={styles.meta}>
-        <dt>Autor</dt>
-        <dd>{author}</dd>
-        <dt>Rok wydania</dt>
-        <dd>{year}</dd>
-        <dt>Ocena</dt>
-        <dd>{stars(rating)}</dd>
-        <dt>Cena</dt>
-        <dd>{formatPrice(price)}</dd>
-      </dl>
+
+      <header className={styles.hero}>
+        <h2 className={styles.title}>{title}</h2>
+        <p className={styles.author}>{author}</p>
+      </header>
+
+      <div className={styles.layout}>
+        <dl className={styles.meta}>
+          <div>
+            <dt>Rok wydania</dt>
+            <dd>{year}</dd>
+          </div>
+          <div>
+            <dt>Gatunek</dt>
+            <dd>{genre}</dd>
+          </div>
+          <div className={styles.wide}>
+            <dt>Ocena</dt>
+            <dd>
+              <span className={styles.stars}>
+                {stars(rating)} <small>{rating}/5</small>
+              </span>
+              <span className={styles.track} aria-hidden="true">
+                <span
+                  className={styles.fill}
+                  style={{ width: `${(rating / 5) * 100}%` }}
+                />
+              </span>
+            </dd>
+          </div>
+        </dl>
+
+        <aside className={styles.buy}>
+          <span className={styles.buyLabel}>Cena</span>
+          <span className={styles.price}>{formatPrice(price)}</span>
+          {available ? (
+            <Badge tone="success">Dostępna</Badge>
+          ) : (
+            <Badge tone="warning">Brak w magazynie</Badge>
+          )}
+        </aside>
+      </div>
     </article>
   );
 }

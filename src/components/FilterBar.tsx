@@ -1,4 +1,5 @@
 import type { GenreFilter, SortOption } from "../types";
+import styles from "./FilterBar.module.css";
 
 const sortOptions: { value: SortOption; label: string }[] = [
   { value: "domyślnie", label: "Domyślnie" },
@@ -39,11 +40,12 @@ export default function FilterBar({
   ];
 
   return (
-    <div>
+    <div className={styles.bar}>
       <label htmlFor="searchQuery">Szukaj po tytule lub autorze</label>
       <input
         id="searchQuery"
         type="search"
+        placeholder="Tytuł lub autor…"
         value={query}
         onChange={(e) => onQueryChange(e.target.value)}
       />

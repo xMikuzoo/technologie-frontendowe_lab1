@@ -1,0 +1,75 @@
+.bar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.bar > label {
+  margin-top: 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--on-ink-muted);
+}
+.bar > label:first-child {
+  margin-top: 0;
+}
+.bar input:not([type="checkbox"]),
+.bar select {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 16px;
+  color: var(--on-ink);
+  background: var(--ink-2);
+  border: 1px solid var(--ink-line);
+  border-radius: 999px;
+  font-family: var(--font-ui);
+  font-weight: 500;
+  transition: border-color 0.15s;
+}
+.bar select {
+  appearance: none;
+  padding-right: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23a39d95' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  color-scheme: dark;
+  cursor: pointer;
+}
+.bar input:not([type="checkbox"])::placeholder {
+  color: var(--on-ink-muted);
+}
+.bar input:not([type="checkbox"]):focus,
+.bar select:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+.bar select option {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  color: var(--on-ink);
+  background: var(--ink-2);
+}
+.bar > label:last-child {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  margin-top: 16px;
+  padding: 0 16px;
+  background: var(--ink-2);
+  border: 1px solid var(--ink-line);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--on-ink);
+  cursor: pointer;
+}
+.bar input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: #e9dcc9;
+}

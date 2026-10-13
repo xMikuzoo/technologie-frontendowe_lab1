@@ -1,21 +1,107 @@
 .details {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 24px;
+  max-width: 920px;
 }
-.badges {
-  display: flex;
-  gap: 8px;
+.hero {
+  margin: 40px 0 36px;
+}
+.title {
+  max-width: 18ch;
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+.author {
+  margin: 12px 0 0;
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 16px;
+  align-items: stretch;
 }
 .meta {
   display: grid;
-  grid-template-columns: max-content 1fr;
-  gap: 8px 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+.meta > div {
+  padding: 18px 20px;
+  background: var(--glass-strong);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  box-shadow: var(--glass-shadow);
 }
 .meta dt {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--muted);
 }
 .meta dd {
-  margin: 0;
+  margin: 6px 0 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+.wide {
+  grid-column: 1 / -1;
+}
+.stars {
+  display: block;
+  letter-spacing: 0.1em;
+}
+.stars small {
+  margin-left: 6px;
+  font-size: 0.8rem;
+  letter-spacing: 0;
+  color: var(--muted);
+}
+.track {
+  display: block;
+  height: 4px;
+  margin-top: 10px;
+  border-radius: 999px;
+  background: var(--track);
+  overflow: hidden;
+}
+.fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--text);
+}
+.buy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 22px 22px 24px;
+  background: var(--ink);
+  color: var(--on-ink);
+  border-radius: var(--radius);
+  box-shadow: 0 16px 36px rgba(20, 16, 12, 0.22);
+}
+.buyLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--on-ink-muted);
+}
+.price {
+  margin-bottom: auto;
+  padding-bottom: 20px;
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  line-height: 1.1;
+}
+@media (max-width: 760px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
 }

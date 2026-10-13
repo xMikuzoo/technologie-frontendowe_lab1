@@ -1,4 +1,13 @@
-import type { GenreFilter } from "../types";
+import type { GenreFilter, SortOption } from "../types";
+
+const sortOptions: { value: SortOption; label: string }[] = [
+  { value: "domyślnie", label: "Domyślnie" },
+  { value: "tytuł", label: "Tytuł (A–Z)" },
+  { value: "cena-rosnąco", label: "Cena: od najniższej" },
+  { value: "cena-malejąco", label: "Cena: od najwyższej" },
+  { value: "ocena", label: "Ocena: od najwyższej" },
+  { value: "rok", label: "Rok: od najnowszych" },
+];
 
 type FilterBarProps = {
   genre: GenreFilter;
@@ -7,6 +16,8 @@ type FilterBarProps = {
   onOnlyAvailableChange: (value: boolean) => void;
   query: string;
   onQueryChange: (value: string) => void;
+  sortBy: SortOption;
+  onSortChange: (value: SortOption) => void;
 };
 
 export default function FilterBar({
@@ -16,6 +27,8 @@ export default function FilterBar({
   onOnlyAvailableChange,
   query,
   onQueryChange,
+  sortBy,
+  onSortChange,
 }: FilterBarProps) {
   const options: GenreFilter[] = [
     "wszystkie",
@@ -44,6 +57,19 @@ export default function FilterBar({
         {options.map((option) => (
           <option key={option} value={option}>
             {option}
+          </option>
+        ))}
+      </select>
+
+      <label htmlFor="sortBy">Sortuj</label>
+      <select
+        id="sortBy"
+        value={sortBy}
+        onChange={(e) => onSortChange(e.target.value as SortOption)}
+      >
+        {sortOptions.map(({ value, label }) => (
+          <option key={value} value={value}>
+            {label}
           </option>
         ))}
       </select>

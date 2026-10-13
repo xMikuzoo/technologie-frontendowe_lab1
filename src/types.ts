@@ -12,3 +12,6 @@ export type Book = {
 };
 
 export type GenreFilter = Genre | "wszystkie";
+
+export type SortOption =
+  "domyślnie" | "tytuł" | "cena-rosnąco" | "cena-malejąco" | "ocena" | "rok";

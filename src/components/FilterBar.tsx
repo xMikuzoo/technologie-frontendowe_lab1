@@ -35,7 +35,7 @@ export default function Filter({
         onChange={(e) => onQueryChange(e.target.value)}
       />
 
-      <label htmlFor="genreFilter">Filturj po gatunku</label>
+      <label htmlFor="genreFilter">Filtruj po gatunku</label>
       <select
         id="genreFilter"
         value={genre}
